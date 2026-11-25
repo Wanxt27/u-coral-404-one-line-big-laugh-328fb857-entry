@@ -37,6 +37,10 @@ function guard(text: string): void {
   if (!/won't fix\.$/.test(text)) {
     throw new Error('entry must end with the "won\'t fix" kicker');
   }
+  // Tight writing: every word earns its place, no double spaces.
+  if (/  /.test(text)) {
+    throw new Error("entry must not contain double spaces");
+  }
 }
 
 function main(): void {
