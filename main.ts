@@ -33,6 +33,10 @@ function guard(text: string): void {
   if (!/AI/i.test(text) || !/ticket/i.test(text)) {
     throw new Error("entry must mention the AI and the ticket");
   }
+  // The kicker must survive: the joke lands on "won't fix".
+  if (!/won't fix\.$/.test(text)) {
+    throw new Error('entry must end with the "won\'t fix" kicker');
+  }
 }
 
 function main(): void {
